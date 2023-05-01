@@ -1,2 +1,3 @@
 const express = require('express');
-const mongoDB  = require('mongoDB');
+const db  = require('./config/connection');
+const routes = require('./routes');

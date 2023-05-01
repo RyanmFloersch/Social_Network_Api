@@ -18,6 +18,7 @@ const userSchema = new Schema({
         match: /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/,
         required: true,
     },
+    // Array of _id values referencing the Thought model
     thoughts:[
         {
             type: Schema.Types.ObjectId,
@@ -25,6 +26,7 @@ const userSchema = new Schema({
         },
         
     ],
+    // Arryan of _id values referencing the user model
     friends:[
         {
             type: Schema.Types.ObjectId,
