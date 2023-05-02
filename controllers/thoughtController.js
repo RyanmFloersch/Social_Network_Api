@@ -64,22 +64,21 @@ module.exports = {
             .catch((err) => {
                 console.log(err);
                 res.status(500).json(err)
-                
+
             }
             )
     },
     deleteThought(req, res) {
-        
+
+        // If the thought isn't found return an error 
+        // else look for the user associated to the thought and upade the thoughts array for the user  
         Thought.findOneAndRemove({ _id: req.params.thoughtId })
             .then((thought) =>
-            
-                // If the thought isn't found return an error 
-                // else look for the user associated to the thought and upade the thoughts array for the user  
                 !thought
                     ? res.status(404).json({ message: 'No thought with this id' })
                     : User.findOneAndUpdate(
-                        { thoughts: req.params.thoughtsId },
-                        { $pull: { thoughts: req.params.thoughtsId } },
+                        { thoughts: req.params.thoughtId },
+                        { $pull: { thoughts: req.params.thoughtId } },
                         { new: true }
                     )
             )
@@ -89,7 +88,7 @@ module.exports = {
                     ? res.status(404).json({ message: 'Thought delete but no user with this id' })
                     : res.json({ message: 'Thought successfully deleted' })
             )
-            .catch((err) =>{
+            .catch((err) => {
                 console.log(err);
                 res.status(500).json(err)
             })

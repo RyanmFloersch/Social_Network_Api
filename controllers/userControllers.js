@@ -1,5 +1,5 @@
 const User = require('../models/User');
-const Thought = require('../models/Thought')
+const Thought = require('../models/Thought');
 const mongoose = require('mongoose');
 
 module.exports = {
@@ -113,4 +113,4 @@ module.exports = {
 
 
 
-}
+};
